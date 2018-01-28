@@ -1,4 +1,4 @@
-AntenaP = {}
+Antena = {}
 Antena.__index = Antena
 
 function Antena.new(initX, initY, lookingAt)

@@ -6,6 +6,7 @@ function BaseO.new(initX, initY, pinned)
 	self.x = initX
 	self.y = initY
 	self.pinned = pinned
+	self.dragging = false
 	return self
 end
 
@@ -17,9 +18,10 @@ function BaseO.update(self, dt)
 	if self:Drag() then
 		self.x = love.mouse.getX()
 		self.y = love.mouse.getY()
-	elseif self.y < 500 then
-		self.y = self.y + 2
 	end
+	-- elseif self.y < 500 then
+	-- 	self.y = self.y + 2
+	-- end
 end
 
 function BaseO.draw(self)
@@ -44,9 +46,19 @@ function BaseO.MouseTouching(self)
 end
 
 function BaseO.Drag(self)
-	if self:MouseTouching() and love.mouse.isDown(1) then
-		return true
-	else 
-		return false
+	if love.mouse.isDown(1) then
+		if self:MouseTouching() or self.dragging then
+			self.dragging = true
+			return true
+		else 
+			return false
+		end
+	else
+		self.dragging = false
+		return fals
 	end
+end
+
+function BaseO.pos(self)
+	return {x = self.x, y = self.y}
 end
