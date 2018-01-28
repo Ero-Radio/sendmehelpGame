@@ -2,7 +2,6 @@ Rope = {}
 Rope.__index = Rope
 
 require "BaseO"
-require "Spring"
 
 function Rope.new(startX, startY, size)
 	local self = setmetatable({}, Rope)

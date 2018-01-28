@@ -89,37 +89,6 @@ function Pulse.RopeUpdate(self, ropeNodes, dt)
 
 end
 
-
-function Pulse.OldRopeUpdate(self, ropeNodes, dt)
-	if self.stepInside >= #ropeNodes then
-		if dist(self.x, self.y, ropeNodes[self.stepInside].x, ropeNodes[self.stepInside].y) <10 then
-			if self.step+1<=#self.objects_list then
-				if dist(self.x, self.y, self.objects_list[self.step+1].x, self.objects_list[self.step+1].y) <10 then
-					self.step = self.step + 1
-				end
-			end
-			self.stepInside = 0
-		end
-		return
-	end
-
-	if self.stepInside == 0 then
-		self.x = ropeNodes[self.stepInside+1].x
-		self.y = ropeNodes[self.stepInside+1].y
-		self.stepInside = 1
-	end
-
-	if dist(self.x, self.y, ropeNodes[self.stepInside].x, ropeNodes[self.stepInside].y) <10 or self.stepInside == 1 then
-		p1 = ropeNodes[self.stepInside]:pos()
-		p2 = ropeNodes[self.stepInside+1]:pos()
-		self.vx = (p2.x - p1.x)/dist(p1.x, p1.y, p2.x, p2.y) * 10
-		self.vy = (p2.y - p1.y)/dist(p1.x, p1.y, p2.x, p2.y) * 10
-		self.stepInside = self.stepInside + 1
-	end
-
-end
-
-
 function Pulse.AntenaUpdate(self, transmitter, receiver, dt)
 
 	--só deixa o sinal proseguir pela antena caso ele chegue proximo ao transmissor
