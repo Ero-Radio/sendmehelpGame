@@ -28,7 +28,7 @@ function BaseO.draw(self)
 	if self:MouseTouching() then
 		love.graphics.setColor(125, 125, 125, 255)
 	else
-		love.graphics.setColor(255, 125, 125, 255)
+		love.graphics.setColor(255, 255, 255, 255)
 	end
 	love.graphics.circle("fill", self.x, self.y, 10)
 end

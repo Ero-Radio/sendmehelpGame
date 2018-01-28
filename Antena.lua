@@ -52,7 +52,6 @@ function Antena.MouseTouching(self)
 	mX = love.mouse.getX()
 	mY = love.mouse.getY()
 	if math.sqrt(math.pow(self.x-mX, 2) + math.pow(self.y-mY, 2)) < 60 then
-		print("Wololo")
 		return true
 	else
 		return false
@@ -73,8 +72,8 @@ function Antena.Drag(self)
 end
 
 function Antena.xEnd(self)
-	return self.x+150*math.cos(self.lookingAt)
+	return self.x+70*math.cos(self.lookingAt)
 end
 function Antena.yEnd(self)
-	return self.y+150*math.sin(self.lookingAt)
+	return self.y+70*math.sin(self.lookingAt)
 end

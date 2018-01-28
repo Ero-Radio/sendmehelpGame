@@ -51,7 +51,7 @@ end
 
 function Pulse.RopeUpdate(self, ropeNodes, dt)
 	-- Aqui ele ainda não entrou no fio
-	if dist(self.x, self.y, ropeNodes[1].x, ropeNodes[1].y) < 15  and
+	if dist(self.x, self.y, ropeNodes[1].x, ropeNodes[1].y) < 25  and
 	   self.stepInside == 0 then
 	   self.x = ropeNodes[1].x
 	   self.y = ropeNodes[1].y
@@ -64,7 +64,7 @@ function Pulse.RopeUpdate(self, ropeNodes, dt)
 			--Existe proximos objetos
 			if self.step < #self.objects_list then
 				-- estou tocando no proximo
-				if dist(self.x, self.y, self.objects_list[self.step+1].x, self.objects_list[self.step+1].y) < 15 then
+				if dist(self.x, self.y, self.objects_list[self.step+1].x, self.objects_list[self.step+1].y) < 25 then
 					self.step = self.step+1
 					self.stepInside = 0
 				-- não estou tocando no proximo
@@ -92,16 +92,16 @@ end
 function Pulse.AntenaUpdate(self, transmitter, receiver, dt)
 
 	--só deixa o sinal proseguir pela antena caso ele chegue proximo ao transmissor
-	if dist(self.x, self.y, transmitter.x, transmitter.y) < 15 then
+	if dist(self.x, self.y, transmitter.x, transmitter.y) < 35 then
 		self.vx = math.cos(transmitter.lookingAt)*10
 		self.vy = math.sin(transmitter.lookingAt)*10
 		--self.step = self.step + 1
 	else
-		if dist(self.x, self.y, receiver:xEnd(), receiver:yEnd()) < 15 then
+		if dist(self.x, self.y, receiver:xEnd(), receiver:yEnd()) < 25 then
 			self.receiverCheck[1] = true
 		end
 
-		if dist(self.x, self.y, receiver.x, receiver.y) < 15 then 
+		if dist(self.x, self.y, receiver.x, receiver.y) < 25 then 
 			if self.receiverCheck[1] then
 				self.receiverCheck[2] = true
 			end
